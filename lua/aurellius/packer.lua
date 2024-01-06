@@ -1,5 +1,6 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
+--ON FIRST INSTALL PLEAE CLONE PACKER TO PACKPATH https://github.com/wbthomason/packer.nvim
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
