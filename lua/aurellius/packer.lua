@@ -1,5 +1,7 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 -- Only required if you have packer configured as `opt`
+
+--ON FIRST INSTALL PLEAE CLONE PACKER TO PACKPATH https://github.com/wbthomason/packer.nvim
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
@@ -33,7 +35,11 @@ return require('packer').startup(function(use)
     }
     use ('jiangmiao/auto-pairs')
 	use('nvim-treesitter/playground')
-	use('/theprimeagen/harpoon')
+    use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+    }
 	use ('tpope/vim-fugitive')
 	use ('mbbill/undotree')
 	use {

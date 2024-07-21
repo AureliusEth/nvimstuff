@@ -15,6 +15,14 @@ ls.add_snippets(nil, {
         }),
     },
     typescriptreact = {
+        -- useEffect
+        s("usf", {
+            t({"useEffect(() =>{"," "}),
+            i(0),
+            t({"},["}),
+            i(1),
+            t({"])"})
+        }),
         -- Function
         s("fun", {
             t({"function "}),
@@ -88,6 +96,16 @@ ls.add_snippets(nil, {
             t({"", "} catch (e) {", "    "}),
             i(1, "handle the error"),
             t({"}"})
+        }),
+        -- state variable
+        s("ust", {
+            t("const ["),
+            i(1,"state"),
+            t(","),
+            i(2,"setState"),
+            t("] = useState("),
+            i(3,"default"),
+            t(")"),
         }),
         -- Asynchronous Function
         s("asf", {
