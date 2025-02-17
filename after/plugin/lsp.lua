@@ -1,15 +1,24 @@
 local lsp = require("lsp-zero")
 local lspconfig = require('lspconfig')
 local configs = require('lspconfig.configs')
+
 lsp.preset("recommended")
 lsp.ensure_installed({
-  'tsserver',
   'rust_analyzer',
   'solidity',
 })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
+
+-- Move LSP Config
+configs.move_analyzer = {
+  default_config = {
+    cmd = { 'sui-move-analyzer' },
+    filetypes = { 'move' },
+    root_dir = lspconfig.util.find_git_ancestor,
+  }
+}
 
 configs.solidity = {
   default_config = {
@@ -20,7 +29,6 @@ configs.solidity = {
   },
 }
 
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -29,8 +37,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-y>'] = cmp.mapping.confirm({ select = true }),
   ["<C-Space>"] = cmp.mapping.complete(),
 })
-vim.api.nvim_set_keymap('n', '<leader>qf', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>qf', '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
@@ -44,6 +52,18 @@ lsp.set_preferences({
 
 lsp.on_attach(function(client, bufnr)
   local opts = {buffer = bufnr, remap = false}
+  
+  -- Enhanced diagnostics for Move
+  if client.name == "move_analyzer" then
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+      vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = true,
+        virtual_text = true,
+        signs = true,
+        underline = true,
+      }
+    )
+  end
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
@@ -59,7 +79,38 @@ end)
 
 lsp.setup()
 lspconfig.solidity.setup {}
+lspconfig.move_analyzer.setup {}
+
 vim.diagnostic.config({
-    virtual_text = true
+    virtual_text = true,
+    update_in_insert = true,
+    severity_sort = true
 })
 
+-- Add Move filetype detection
+vim.filetype.add({
+  extension = {
+    move = "move",
+  },
+})
+
+-- Return the complete configuration including plugins
+return {
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/nvim-cmp",
+      "L3MON4D3/LuaSnip",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      -- Your LSP configuration here
+    end
+  },
+  {
+    "yanganto/move.vim",
+    branch = "sui-move",
+  }
+}

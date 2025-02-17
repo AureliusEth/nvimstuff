@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/home/aurellius/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/aurellius/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/aurellius/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/aurellius/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/aurellius/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
+local package_path_str = "/home/aurellius/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?.lua;/home/aurellius/.cache/nvim/packer_hererocks/2.1.1720049189/share/lua/5.1/?/init.lua;/home/aurellius/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?.lua;/home/aurellius/.cache/nvim/packer_hererocks/2.1.1720049189/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/aurellius/.cache/nvim/packer_hererocks/2.1.1720049189/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -87,6 +87,12 @@ _G.packer_plugins = {
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/auto-pairs",
     url = "https://github.com/jiangmiao/auto-pairs"
   },
+  ["avante.nvim"] = {
+    config = { "\27LJ\2\no\0\0\3\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0B\0\2\1K\0\1\0\1\0\1\rprovider\vgemini\nsetup\vavante\tload\15avante_lib\frequire\0" },
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/avante.nvim",
+    url = "https://github.com/yetone/avante.nvim"
+  },
   ["cmp-nvim-lsp"] = {
     loaded = true,
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
@@ -97,10 +103,25 @@ _G.packer_plugins = {
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["copilot.lua"] = {
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/copilot.lua",
+    url = "https://github.com/zbirenbaum/copilot.lua"
+  },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["img-clip.nvim"] = {
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/img-clip.nvim",
+    url = "https://github.com/HakonHarnes/img-clip.nvim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -117,6 +138,16 @@ _G.packer_plugins = {
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["move.vim"] = {
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/move.vim",
+    url = "https://github.com/yanganto/move.vim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -132,6 +163,11 @@ _G.packer_plugins = {
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/packer.nvim",
@@ -146,6 +182,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  ["render-markdown.nvim"] = {
+    loaded = true,
+    path = "/home/aurellius/.local/share/nvim/site/pack/packer/start/render-markdown.nvim",
+    url = "https://github.com/MeanderingProgrammer/render-markdown.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -175,6 +216,10 @@ time([[Defining packer_plugins]], false)
 time([[Config for vim-gotham]], true)
 try_loadstring("\27LJ\2\n6\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\23colorscheme gotham\bcmd\bvim\0", "config", "vim-gotham")
 time([[Config for vim-gotham]], false)
+-- Config for: avante.nvim
+time([[Config for avante.nvim]], true)
+try_loadstring("\27LJ\2\no\0\0\3\0\6\0\f6\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\0016\0\0\0'\2\3\0B\0\2\0029\0\4\0005\2\5\0B\0\2\1K\0\1\0\1\0\1\rprovider\vgemini\nsetup\vavante\tload\15avante_lib\frequire\0", "config", "avante.nvim")
+time([[Config for avante.nvim]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd nvim-cmp ]]

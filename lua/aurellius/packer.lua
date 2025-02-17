@@ -7,7 +7,35 @@ return require('packer').startup(function(use)
 	-- Packer can manage itself
 	use 'wbthomason/packer.nvim'
 
-	use {
+    use({
+        'yanganto/move.vim',
+        branch = 'sui-move'
+    })	
+    
+  -- Required plugins
+  use 'stevearc/dressing.nvim'
+  use 'nvim-lua/plenary.nvim'
+  use 'MunifTanjim/nui.nvim'
+  use 'MeanderingProgrammer/render-markdown.nvim'
+
+  -- Optional dependencies
+  use 'hrsh7th/nvim-cmp'
+  use 'nvim-tree/nvim-web-devicons' -- or use 'echasnovski/mini.icons'
+  use 'HakonHarnes/img-clip.nvim'
+  use 'zbirenbaum/copilot.lua'
+
+  -- Avante.nvim with build process
+  use {
+    'yetone/avante.nvim',
+    branch = 'main',
+    run = 'make',
+    config = function()
+      require('avante_lib').load()
+      require('avante').setup({provider="gemini"})
+    end
+  }
+
+    use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.2',
 		-- or                         , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
