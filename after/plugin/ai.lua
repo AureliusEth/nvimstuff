@@ -213,7 +213,7 @@ M._defaults = {
     ---9. enable_token_counting           : Whether to enable token counting. Default to true.
     behaviour = {
         auto_focus_sidebar = true,
-        auto_suggestions = false, -- Experimental stage
+        auto_suggestions = true, -- Experimental stage
         auto_suggestions_respect_ignore = false,
         auto_set_highlight_group = true,
         auto_set_keymaps = true,
